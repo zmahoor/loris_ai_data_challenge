@@ -1,21 +1,11 @@
 
-# coding: utf-8
-
-# In[1]:
-
-
 import os
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import pandas as pd
 import re
-
 from textblob import TextBlob
-
-
-# In[ ]:
-
 
 input_directory = '/Users/zahra/git/loris_ai_data_challenge/data/'
 
@@ -24,9 +14,6 @@ topic_dict = {'1': 'Ordinary Life', '2': 'School Life', '3': 'Culture_Education'
               '8': 'Work', '9': 'Politics', '10': 'Finance'}
 
 action_dict = {'1': 'inform', '2': 'question', '3': 'directive', '4': 'commissive'}
-
-
-# In[ ]:
 
 
 def read_glove_vecs(glove_file):
@@ -53,21 +40,12 @@ def read_glove_vecs(glove_file):
     return words_to_index, index_to_words, word_to_vec_map
 
 
-# In[ ]:
-
-
 def convert_topic(topic):
     return topic_dict[topic]
 
 
-# In[ ]:
-
-
 def convert_action(act):
     return action_dict[act]
-
-
-# In[ ]:
 
 
 def load_conversations(category='train'):
@@ -104,9 +82,6 @@ def load_conversations(category='train'):
     return conversations_list
 
 
-# In[ ]:
-
-
 def find_sentiments(conversations_list):
     
     for conversation_dict in conversations_list:
@@ -119,10 +94,6 @@ def find_sentiments(conversations_list):
             conversation_emotion_blob.append(blob.sentiment.polarity)
         conversation_dict['blob_emotions'] = conversation_emotion_blob
     
-
-
-# In[ ]:
-
 
 def create_samples(conversations_list):
     
